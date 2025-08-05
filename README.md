@@ -31,10 +31,10 @@ A Python web app that automates scraping of Indian district court case details, 
 ### 🔧 1. Clone the repo & install dependencies
 
 ```bash
-git clone https://github.com/<your-username>/court-data-fetcher-flask-ocr.git
+git clone https://github.com/PoornimaKC/court-data-fetcher-flask-ocr.git
 cd court-data-fetcher-flask-ocr
 python -m venv venv
-venv\Scripts\activate  # (Use `source venv/bin/activate` for Mac/Linux)
+venv\Scripts\activate  
 pip install -r requirements.txt
 
 ⚙️ 2. Initialize the database
@@ -49,14 +49,14 @@ python scraper/fetch_case_data.py
 🌐 4. Launch the Flask app
 
 python app.py
-Then open http://127.0.0.1:5000 in your browser.
+Then open http://127.0.0.1:5000 in the browser.
 
 📄 5. View Case Info or Download PDF
 Enter Case Type, Case Number, and Filing Year
 
 Click Search
 
-If case exists, you can download a PDF of the details.
+If case exists, We can download a PDF of the details.
 
 📁 Folder Structure
 
@@ -80,7 +80,7 @@ court-data-fetcher/
 ├── requirements.txt           # All Python dependencies
 ├── .gitignore                 # To ignore DB and screenshots
 └── README.md                  # You're reading it!
-🤓 Example Output
+Example Output
 Sample court case scraped, extracted and rendered in the UI and exported to PDF:
 
 
