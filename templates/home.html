@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Court Case Viewer</title>
+    <style>
+        body { font-family: Arial; padding: 20px; background-color: #f8f8f8; }
+        .form-box { background: #fff; padding: 20px; border-radius: 8px; max-width: 500px; margin: auto; }
+        .result-box { margin-top: 20px; padding: 20px; background: #e9ffe9; border: 1px solid #ccc; }
+        .download-btn { margin-top: 15px; }
+    </style>
+</head>
+<body>
+    <div class="form-box">
+        <h2>🔍 Search Court Case</h2>
+        <form method="POST">
+            <label>Case Type:</label><br>
+            <input type="text" name="case_type" required><br><br>
+            <label>Case Number:</label><br>
+            <input type="text" name="case_number" required><br><br>
+            <label>Filing Year:</label><br>
+            <input type="text" name="year" required><br><br>
+            <button type="submit">Search</button>
+        </form>
+
+        {% if message %}
+            <p style="color:red">{{ message }}</p>
+        {% endif %}
+    </div>
+
+    {% if result %}
+        <div class="result-box">
+            <h3>🧾 Case Details:</h3>
+            <p><strong>Case Type:</strong> {{ result.case_type }}</p>
+            <p><strong>Case Number:</strong> {{ result.case_number }}</p>
+            <p><strong>Filing Year:</strong> {{ result.filing_year }}</p>
+            <p><strong>Petitioner:</strong> {{ result.petitioner }}</p>
+            <p><strong>Respondent:</strong> {{ result.respondent }}</p>
+            <p><strong>Fetched At:</strong> {{ result.timestamp }}</p>
+
+            <!-- PDF Download Form -->
+            <form action="/download" method="POST" class="download-btn">
+                <input type="hidden" name="case_type" value="{{ result.case_type }}">
+                <input type="hidden" name="case_number" value="{{ result.case_number }}">
+                <input type="hidden" name="filing_year" value="{{ result.filing_year }}">
+                <input type="hidden" name="petitioner" value="{{ result.petitioner }}">
+                <input type="hidden" name="respondent" value="{{ result.respondent }}">
+                <input type="hidden" name="timestamp" value="{{ result.timestamp }}">
+                <button type="submit">📥 Download as PDF</button>
+            </form>
+        </div>
+    {% endif %}
+</body>
+</html>
